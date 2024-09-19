@@ -59,7 +59,7 @@ const CameraCapture = () => {
       {photo && (
         <div>
           <h3>Captured Photo:</h3>
-          <img src={photo} alt="Captured" />
+          {/* <img src={photo} alt="Captured" /> */}
           {/* <p>{photo}</p> */}
           <button onClick={handleSendClick} disabled={waitingForApiResponse}>
             {waitingForApiResponse ? "Loading..." : "Send"}
