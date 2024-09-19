@@ -3,7 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { testPhoto } from "./testPhotoBase64String";
 import { ContentBlock } from "@anthropic-ai/sdk/resources/messages.mjs";
 import { Spending, spendingTable } from "../db/schema";
-import { queryy, typedData } from "./util";
+import { getPrompt, typedData } from "./util";
 import { db } from "@/db";
 
 export async function llmWork(photo: string) {
@@ -17,7 +17,7 @@ export async function llmWork(photo: string) {
 
   photo = photo.split(",")[1];
 
-  var parsedResponse : Spending;
+  let parsedResponse : Spending;
 
   if (process.env.NODE_ENV == "development") {
     console.log("in dev mode so not doing claude api call")
@@ -34,7 +34,7 @@ export async function llmWork(photo: string) {
           content: [
             {
               type: "text",
-              text: queryy,
+              text: await getPrompt(),
             },
             {
               type: "image",

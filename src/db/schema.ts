@@ -3,6 +3,7 @@ import {
   integer,
   jsonb,
   pgTable,
+  serial,
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
@@ -37,14 +38,13 @@ export const spendingTable = pgTable("spending", {
 });
 export type Spending = typeof spendingTable.$inferInsert;
 
-// export const categoryTable = pgTable("category", {
-//   id: integer("id").notNull().primaryKey(),
-//   date: timestamp("date", { mode: "date" }).notNull(),
-//   description: text("description").notNull(),
-//   category: text("category").notNull(),
-//   price: integer("price").notNull(),
-// });
-// export type Category = typeof categoryTable.$inferInsert;
+export const categoryTable = pgTable("category", {
+  id: serial('id').primaryKey(),
+  name: text("name").notNull(),
+  color: text("color").notNull(),
+  createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
+});
+export type Category = typeof categoryTable.$inferInsert;
 
 export const webhookEvents = pgTable("webhookEvent", {
   id: integer("id").primaryKey().default(1),

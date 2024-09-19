@@ -14,11 +14,9 @@ import {
 import {
   ChartConfig,
   ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
 } from "@/components/ui/chart";
 import { getChartData } from "./action";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Spending } from "@/db/schema";
 import { ChartDataType } from "../util";
 

@@ -38,6 +38,7 @@ const CameraCapture = () => {
   const handleSendClick = async () => {
     setWaitingForApiResponse(true);
     const resp = await llmWork(photo!);
+    console.log(resp)
 
     setWaitingForApiResponse(false);
 
